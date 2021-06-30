@@ -1,0 +1,25 @@
+.CenterDrop {
+  display: flex;
+  height: auto;
+  border-left: 1px solid gray;
+  padding-right: 7px;
+  cursor: pointer;
+  padding: 2px;
+  color: darkslategray;
+}
+.ScrollingDropdown {
+  height: 100%;
+  max-height: 63px;
+  overflow-y: scroll;
+  padding-bottom: 2px;
+}
+.Border {
+  border: 1px solid rgb(75, 193, 230);
+  width: 41%;
+  margin-left: 30%;
+  border-radius: 3px;
+}
+
+.CenterDrop:hover {
+  background-color: antiquewhite;
+}
