@@ -3,7 +3,7 @@ import "./index.css";
 
 function Arrow(props) {
   const { arrow, handleArrow } = props;
-  console.log(arrow);
+
   return (
     <div onClick={handleArrow}>
       {arrow ? (

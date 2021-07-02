@@ -2,7 +2,7 @@ import React from "react";
 
 const Chip = (props) => {
   const { value, updateChip, id } = props;
-  console.log(id);
+
   return (
     <div
       style={{
