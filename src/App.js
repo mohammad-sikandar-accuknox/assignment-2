@@ -44,7 +44,7 @@ function App() {
     return response.data.data;
   };
 
-  const { data, status } = useQuery("user", fetchUser); // useQuery hook to get response data
+  const { data, status } = useQuery("user", fetchUser, { enabled: arrow }); // useQuery hook to get response data
 
   useEffect(() => {
     if (status === "success") {
@@ -117,20 +117,27 @@ function App() {
   };
   const handleArrow = () => {
     setArrow((arrow) => !arrow); //toggle dropdown arrow
-    if (!items.length > 0) {
+    if (items && !items.length > 0) {
       setItems(createData(data));
     }
+    if (status === "success" && !items) {
+      setItems(createData(data));
+      setArrow((arrow) => true);
+    }
   };
+
   /**
    * handler to clear all selected value from dropdown
    */
   const handleClear = () => {
-    const lists = [...items];
-    setItems(changeDesc(lists, false));
+    if (items) {
+      const lists = [...items];
+      setItems(changeDesc(lists, false));
+    }
   };
   const handleInputClick = () => {
     setArrow((arrow) => true);
-    if (!items.length > 0) {
+    if (items && !items.length > 0) {
       setItems(createData(data));
     }
   };

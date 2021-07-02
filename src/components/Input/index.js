@@ -4,24 +4,34 @@ import Chip from "../Chip";
 import Arrow from "../DropArrow";
 
 const Input = (props) => {
-  const { items, chip, arrow, handleQuery, handleArrow, handleClear, handleInputClick } = props;
+  const {
+    items,
+    chip,
+    arrow,
+    handleQuery,
+    handleArrow,
+    handleClear,
+    handleInputClick,
+  } = props;
   return (
     <div>
       <div className="Center">
-        {items.map((item) => {
-          if (item.selected) {
-            return (
-              <Chip
-                value={item.name}
-                key={item._id}
-                updateChip={chip}
-                id={item._id}
-              />
-            );
-          } else {
-            return null;
-          }
-        })}
+        {items
+          ? items.map((item) => {
+              if (item.selected) {
+                return (
+                  <Chip
+                    value={item.name}
+                    key={item._id}
+                    updateChip={chip}
+                    id={item._id}
+                  />
+                );
+              } else {
+                return null;
+              }
+            })
+          : null}
 
         <input
           className="Input"

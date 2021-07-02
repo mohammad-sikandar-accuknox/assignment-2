@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Dropdown/index.css";
-
-
 
 const Dropdown = (props) => {
   const { items, drop, query, arrow, status } = props;
@@ -12,9 +10,11 @@ const Dropdown = (props) => {
    * @returns Array of filtered names from items state
    */
   function filter(options) {
-    return options.filter(
-      (option) => option.name.toLowerCase().indexOf(query.toLowerCase()) > -1
-    );
+    if (options) {
+      return options.filter(
+        (option) => option.name.toLowerCase().indexOf(query.toLowerCase()) > -1
+      );
+    } else return [];
   }
 
   {
@@ -27,21 +27,23 @@ const Dropdown = (props) => {
                 loading ...
               </div>
             ) : null}
-            {filter(items).map((item) => {
-              if (!item.selected) {
-                return (
-                  <div
-                    className="CenterDrop"
-                    key={item._id}
-                    onClick={() => drop(item._id)}
-                  >
-                    {item.name}
-                  </div>
-                );
-              } else {
-                return null;
-              }
-            })}
+            {status === "success"
+              ? filter(items).map((item) => {
+                  if (!item.selected) {
+                    return (
+                      <div
+                        className="CenterDrop"
+                        key={item._id}
+                        onClick={() => drop(item._id)}
+                      >
+                        {item.name}
+                      </div>
+                    );
+                  } else {
+                    return null;
+                  }
+                })
+              : null}
           </div>
         </div>
       );
