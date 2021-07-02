@@ -141,6 +141,10 @@ function App() {
       setItems(createData(data));
     }
   };
+  const handleBlur = () => {
+    setArrow((arrow) => false);
+    console.log("blurr");
+  };
   return (
     <>
       <Input
@@ -151,6 +155,7 @@ function App() {
         handleArrow={handleArrow}
         handleClear={handleClear}
         handleInputClick={handleInputClick}
+        handleBlur={handleBlur}
       />
       <div style={{ margin: "3px" }}></div>
       <Dropdown

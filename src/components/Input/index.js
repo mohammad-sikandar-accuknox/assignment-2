@@ -12,6 +12,7 @@ const Input = (props) => {
     handleArrow,
     handleClear,
     handleInputClick,
+    handleBlur,
   } = props;
   return (
     <div>
@@ -37,6 +38,7 @@ const Input = (props) => {
           className="Input"
           onChange={handleQuery}
           onClick={handleInputClick}
+          onBlur={handleBlur}
         />
         <span className="close-btn" onClick={handleClear}>
           &times;
